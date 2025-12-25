@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register - Expense Tracker</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <style>
+        /* Enhanced Form Styles */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #2a9d8f;
+            --error-color: #e63946;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo h1 {
+            text-align: center;
+            margin-bottom: 0.25rem;
+            color: #333;
+        }
+
+        .logo h1 span {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .logo p {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .auth-form {
+            margin-top: 2rem;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            font-size: 0.95rem;
+            border: 2px solid #e1e4e8;
+            border-radius: 6px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            outline: none;
+        }
+
+        /* Icons for inputs using Font Awesome */
+        .form-group::before {
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            pointer-events: none;
+        }
+
+        .form-group:nth-child(1)::before {
+            content: '\f007'; /* User icon */
+        }
+
+        .form-group:nth-child(2)::before {
+            content: '\f0e0'; /* Email icon */
+        }
+
+        .form-group:nth-child(3)::before,
+        .form-group:nth-child(4)::before {
+            content: '\f023'; /* Lock icon */
+        }
+
+        /* Submit button */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 14px 24px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        /* Required field asterisk */
+        input:required + label::after {
+            content: ' *';
+            color: var(--error-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                margin: 0 15px;
+            }
+
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-group input {
+                padding: 12px 15px 12px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-container">
+            <div class="logo">
+                <h1>
+                    Expense<span>Tracker</span>
+                </h1>
+                <p>Create your account to get started</p>
+            </div>
+
+            <form id="registerForm" class="auth-form" novalidate>
+                <div class="form-group">
+                    <input type="text" id="username" name="username" required />
+                    <label for="username">Username</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required />
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="password" name="password" required />
+                    <label for="password">Password</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" name="confirmPassword" required />
+                    <label for="confirmPassword">Confirm Password</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Register</button>
+
+                <p class="auth-link" style="text-align:center; margin-top: 1rem;">
+                    Already have an account?
+                    <a href="/login">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
