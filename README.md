@@ -199,6 +199,12 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 
 
 
+## Notes
+
+- Added `app/services/forms.py` to define form classes for user input validation.
+- Supports registration, login, password reset, and other form handling.
+- Enhances data integrity and user experience with built-in validations.
+
 
 
 
