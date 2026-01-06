@@ -1,226 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Expense Tracker</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login · Expense Tracker</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3f37c9;
+            --text: #2b2d42;
+            --border: #dee2e6;
+            --bg: #f0f2f5;
+            --error: #e63946;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .logo p {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .auth-form {
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67,97,238,.15);
+        }
+
+        .error {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .auth-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
+
+        .alert {
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
 </head>
-<style>
-    /* Base Styles */
-:root {
-    --primary-color: #4361ee;
-    --secondary-color: #3f37c9;
-    --text-color: #2b2d42;
-    --light-gray: #f8f9fa;
-    --border-color: #dee2e6;
-    --error-color: #e63946;
-    --success-color: #2a9d8f;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f0f2f5;
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-/* Auth Container */
-.auth-container {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 450px;
-    padding: 40px;
-    text-align: center;
-}
-
-/* Logo */
-.logo h1 {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    color: var(--text-color);
-}
-
-.logo h1 span {
-    color: var(--primary-color);
-}
-
-.logo p {
-    color: #6c757d;
-    margin-bottom: 30px;
-}
-
-/* Form Styles */
-.auth-form {
-    margin-top: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--text-color);
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-}
-
-/* Buttons */
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    width: 100%;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background-color: white;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    margin-top: 10px;
-}
-
-.btn-secondary:hover {
-    background-color: #f8f9fa;
-}
-
-/* Auth Links */
-.auth-link {
-    margin-top: 20px;
-    color: #6c757d;
-}
-
-.auth-link a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.auth-link a:hover {
-    text-decoration: underline;
-}
-
-.forgot-password {
-    display: block;
-    text-align: right;
-    font-size: 0.9rem;
-    margin-top: 8px;
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-/* Auth Options */
-.auth-options {
-    margin-top: 30px;
-}
-
-/* Responsive Design */
-@media (max-width: 480px) {
-    .auth-container {
-        padding: 30px 20px;
-    }
-    
-    .logo h1 {
-        font-size: 1.8rem;
-    }
-}
-
-/* Error Message */
-.error-message {
-    color: var(--error-color);
-    font-size: 0.9rem;
-    margin-top: 5px;
-    text-align: left;
-}
-
-/* Success Message */
-.success-message {
-    color: var(--success-color);
-    background-color: rgba(42, 157, 143, 0.1);
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-}
-</style>
 <body>
-    <div class="container">
-        <div class="auth-container">
-            <div class="logo">
-                <h1>Expense<span>Tracker</span></h1>
-                <p>Welcome back! Please login to continue.</p>
-            </div>
-            <form id="loginForm" class="auth-form">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                    <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-                <p class="auth-link">Don't have an account? <a href="/register">Register here</a></p>
-                <p class="auth-link"><a href="/">Return to Home</a></p>
 
-            </form>
+<div class="container">
+    <div class="auth-container">
+
+        <div class="logo">
+            <h1>Expense<span>Tracker</span></h1>
+            <p>Welcome back! Login to continue.</p>
         </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+  <form class="auth-form" method="POST" action="{{ url_for('user_api.login') }}">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.email.label }}
+        {{ form.email(class_="form-control", placeholder="Email address", autocomplete="email") }}
+        {% for error in form.email.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
     </div>
-    <script src="script.js"></script>
+
+    <div class="form-group">
+        {{ form.password.label }}
+        {{ form.password(class_="form-control", placeholder="Password", autocomplete="current-password") }}
+        {% for error in form.password.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('user_api.forgot_password') }}" class="forgot-password">Forgot password?</a>
+
+    <button type="submit" class="btn">Login</button>
+
+    <p class="auth-link">
+        Don’t have an account?
+        <a href="{{ url_for('user_api.register') }}">Register</a>
+    </p>
+
+    <p class="auth-link">
+        <a href="{{ url_for('home') }}">Return to Home</a>
+    </p>
+</form>
+
+
+    </div>
+</div>
+
 </body>
 </html>

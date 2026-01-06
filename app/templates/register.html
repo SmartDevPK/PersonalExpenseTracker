@@ -78,7 +78,10 @@
             margin-bottom: 1.5rem;
         }
 
-        .form-group input {
+        .form-group input,
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="text"] {
             width: 100%;
             padding: 12px 15px 12px 40px;
             font-size: 0.95rem;
@@ -93,29 +96,10 @@
             outline: none;
         }
 
-        /* Icons for inputs using Font Awesome */
-        .form-group::before {
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6c757d;
-            pointer-events: none;
-        }
-
-        .form-group:nth-child(1)::before {
-            content: '\f007'; /* User icon */
-        }
-
-        .form-group:nth-child(2)::before {
-            content: '\f0e0'; /* Email icon */
-        }
-
-        .form-group:nth-child(3)::before,
-        .form-group:nth-child(4)::before {
-            content: '\f023'; /* Lock icon */
+        /* Required field asterisk */
+        input:required + label::after {
+            content: ' *';
+            color: var(--error-color);
         }
 
         /* Submit button */
@@ -140,10 +124,15 @@
             box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
         }
 
-        /* Required field asterisk */
-        input:required + label::after {
-            content: ' *';
+        .error {
             color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .auth-link a {
+            color: var(--primary-color);
+            text-decoration: none;
         }
 
         /* Responsive */
@@ -173,32 +162,46 @@
                 <p>Create your account to get started</p>
             </div>
 
-            <form id="registerForm" class="auth-form" novalidate>
+            <form id="registerForm" method="POST" action="{{ url_for('user_api.register') }}" class="auth-form" novalidate>
+                {{ form.hidden_tag() }}
+
                 <div class="form-group">
-                    <input type="text" id="username" name="username" required />
-                    <label for="username">Username</label>
+                    {{ form.username(class_="form-control", placeholder="Username") }}
+                    {{ form.username.label }}
+                    {% for error in form.username.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
                 <div class="form-group">
-                    <input type="email" id="email" name="email" required />
-                    <label for="email">Email</label>
+                    {{ form.email(class_="form-control", placeholder="Email") }}
+                    {{ form.email.label }}
+                    {% for error in form.email.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
                 <div class="form-group">
-                    <input type="password" id="password" name="password" required />
-                    <label for="password">Password</label>
+                    {{ form.password(class_="form-control", placeholder="Password") }}
+                    {{ form.password.label }}
+                    {% for error in form.password.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
                 <div class="form-group">
-                    <input type="password" id="confirmPassword" name="confirmPassword" required />
-                    <label for="confirmPassword">Confirm Password</label>
+                    {{ form.confirm_password(class_="form-control", placeholder="Confirm Password") }}
+                    {{ form.confirm_password.label }}
+                    {% for error in form.confirm_password.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <button type="submit" class="btn btn-primary">Register</button>
+                {{ form.submit(class_="btn btn-primary") }}
 
                 <p class="auth-link" style="text-align:center; margin-top: 1rem;">
                     Already have an account?
-                    <a href="/login">Login here</a>
+                    <a href="{{ url_for('user_api.login') }}">Login here</a>
                 </p>
             </form>
         </div>
