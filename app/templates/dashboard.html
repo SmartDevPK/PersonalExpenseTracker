@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Expense Tracker - Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #3498db;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    main {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"],
+    input[type="file"],
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 20px;
+      border: 1.8px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="date"]:focus,
+    input[type="time"]:focus,
+    input[type="file"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    button.btn-primary {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    button.btn-primary:hover {
+      background-color: #2980b9;
+    }
+    .logout-link {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #e74c3c;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .logout-link:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <header>Expense Tracker Dashboard</header>
+  <main>
+    <h2>Add New Expense</h2>
+    <form method="POST" action="" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+
+      <label for="date">Date</label>
+      {{ form.date(class="form-control", id="date") }}
+
+      <label for="time">Time</label>
+      {{ form.time(class="form-control", id="time") }}
+
+      <label for="description">Description</label>
+      {{ form.description(class="form-control", id="description", placeholder="E.g. Grocery shopping") }}
+
+      <label for="amount">Amount (USD)</label>
+      {{ form.amount(class="form-control", id="amount", step="0.01") }}
+
+      <label for="receipt">Upload Receipt</label>
+      {{ form.receipt(class="form-control-file", id="receipt") }}
+
+      <button type="submit" class="btn-primary">Add Expense</button>
+    </form>
+
+    <a href="{{ url_for('user_api.logout') }}" class="logout-link">Logout</a>
+  </main>
+</body>
+</html>
