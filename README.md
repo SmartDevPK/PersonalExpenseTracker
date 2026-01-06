@@ -130,5 +130,11 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - This improves app modularity and supports easier testing and configuration.
 - Removed direct blueprint registration and route definition in favor of centralized setup in the factory.
 
+## Notes
+
+- Added `app/models/__init__.py` to initialize the models package and import the `User` model.
+- This setup enables clean and centralized model imports throughout the app.
+- Prepared for scalable addition of other models as the project grows.
+
 
 
