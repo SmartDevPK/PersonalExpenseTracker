@@ -143,5 +143,11 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Implements secure password reset token generation and expiry handling.
 - Uses Flask-Login's `UserMixin` for session management integration.
 
+## Notes
+
+- Added `app/schemas/__init__.py` to initialize the schemas package.
+- Imported `UserSchema` for centralized schema management.
+- This structure supports scalable addition of data serialization schemas.
+
 
 
