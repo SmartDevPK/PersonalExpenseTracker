@@ -84,9 +84,13 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Registers all API blueprints for modular routing.
 
 ## Notes
-
 - I refactored `app/api/__init__.py` to improve how API blueprints are initialized.
 - I made this change to keep route registration clean and to avoid potential circular import issues.
+
+## Notes
+- I expanded `app/api/user_routes.py` to handle full user authentication flows.
+- This includes registration, login, logout, password reset, and form handling.
+- I structured the routes to integrate CSRF protection, database access, and reusable service layers.
 
 
 
