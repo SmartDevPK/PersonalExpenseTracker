@@ -83,5 +83,10 @@ The `app/__init__.py` file contains the Flask application factory function `crea
   - Custom security setup via `init_security`
 - Registers all API blueprints for modular routing.
 
+## Notes
+
+- I refactored `app/api/__init__.py` to improve how API blueprints are initialized.
+- I made this change to keep route registration clean and to avoid potential circular import issues.
+
 
 
