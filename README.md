@@ -41,3 +41,19 @@ ExpenseTracker/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+
+## Environment Variables (.env)
+
+This project uses a `.env` file to manage environment-specific configurations such as database credentials, secret keys, and email settings.
+
+### Required variables
+
+Create a `.env` file in the root directory of the project with the following variables:
+
+```env
+MYSQL_USERNAME=root
+MYSQL_PASSWORD=
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_DB=PersonalExpenseTracker
+```
