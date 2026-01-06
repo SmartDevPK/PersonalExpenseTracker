@@ -68,3 +68,20 @@ __pycache__/
 instance/
 *.log
 
+## Application Initialization
+
+The `app/__init__.py` file contains the Flask application factory function `create_app()`. This function:
+
+- Loads environment variables early using `python-dotenv`.
+- Configures Flask to use PyMySQL as the MySQLdb driver.
+- Creates a Flask app instance and loads configuration settings from the `Config` class.
+- Initializes core Flask extensions including:
+  - Flask-Mail for email support
+  - SQLAlchemy for database ORM
+  - Flask-Login for user session management
+  - CSRF protection with Flask-WTF
+  - Custom security setup via `init_security`
+- Registers all API blueprints for modular routing.
+
+
+
