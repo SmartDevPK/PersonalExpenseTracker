@@ -112,5 +112,11 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - This setup ensures that only specified frontends can access the API while supporting credentials like cookies.
 
 
+## Notes
+
+- Added `app/db/__init__.py` to initialize the SQLAlchemy database instance.
+- Centralizes the database setup, allowing easy import of `db` across the app.
+- Prepared the codebase for scalable database management and ORM usage.
+
 
 
