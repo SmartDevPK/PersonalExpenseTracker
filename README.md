@@ -205,6 +205,11 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Supports registration, login, password reset, and other form handling.
 - Enhances data integrity and user experience with built-in validations.
 
+## Notes
+
+- Added `app/services/welcomeEmail.py` to manage sending welcome emails to new users.
+- Centralizes welcome email logic for easier maintenance and customization.
+
 
 
 
