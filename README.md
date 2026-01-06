@@ -57,3 +57,14 @@ MYSQL_HOST=localhost
 MYSQL_PORT=3306
 MYSQL_DB=PersonalExpenseTracker
 ```
+
+## gitignore
+
+The .gitignore file tells Git which files or directories to ignore and not track in the repository. This is essential for excluding files that are environment-specific, contain sensitive data, or are generated automatically (like logs, caches, or compiled files).
+
+.env
+__pycache__/
+*.pyc
+instance/
+*.log
+
