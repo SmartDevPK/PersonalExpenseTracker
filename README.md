@@ -99,5 +99,12 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - I integrated Flask-Login, CSRF protection, and form validation while keeping business logic in service layers.
 - This structure improves maintainability and keeps user-related concerns isolated within the API layer.
 
+## Notes
+- Added `app/config.py` to centralize configuration using environment variables.
+- The `Config` class handles database connection settings, secret key management, and mail server configuration.
+- This setup improves security by loading sensitive information from `.env` and supports easy configuration changes across environments.
+
+
+
 
 
