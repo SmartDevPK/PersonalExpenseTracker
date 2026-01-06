@@ -185,6 +185,12 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Encapsulates validation, user creation, and related business rules in a dedicated service layer.
 - Improves separation of concerns and keeps registration workflow modular and testable.
 
+## Notes
+
+- Added `app/services/auth_service.py` to manage user authentication processes.
+- Encapsulates login verification, session handling, and security checks.
+- Keeps authentication logic modular and reusable across the application.
+
 
 
 
