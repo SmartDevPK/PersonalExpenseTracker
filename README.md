@@ -210,6 +210,14 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Added `app/services/welcomeEmail.py` to manage sending welcome emails to new users.
 - Centralizes welcome email logic for easier maintenance and customization.
 
+## Notes
+
+- Added new HTML templates:  
+  - `dashboard.html` for user dashboard UI  
+  - `forgot_password.html` for initiating password reset  
+  - `reset_password.html` for completing password reset  
+- These templates improve user experience for account management flows.
+
 
 
 
