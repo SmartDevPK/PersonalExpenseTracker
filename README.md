@@ -169,6 +169,11 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Added/updated authentication-related functionality in `app/auth/`.
 - Updated `README.md` to document recent authentication module changes and improvements.
 
+## Notes
+
+- Added `app/create_table.py` to handle database table creation and schema setup.
+- This script facilitates initial database setup and can be extended for migrations.
+
 
 
 
