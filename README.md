@@ -124,4 +124,11 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Added `app/db/database.py` to initialize the SQLAlchemy instance separately.
 - This modular approach supports better organization and easier imports across the ap
 
+## Notes
+
+- Refactored `app/main.py` to use the Flask application factory pattern by importing and calling `create_app()`.
+- This improves app modularity and supports easier testing and configuration.
+- Removed direct blueprint registration and route definition in favor of centralized setup in the factory.
+
+
 
