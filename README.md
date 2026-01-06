@@ -136,5 +136,12 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - This setup enables clean and centralized model imports throughout the app.
 - Prepared for scalable addition of other models as the project grows.
 
+## Notes
+
+- Added `app/models/user.py` defining the `User` model for authentication.
+- Includes fields for username, email, password hash, and login security (failed attempts, lockout).
+- Implements secure password reset token generation and expiry handling.
+- Uses Flask-Login's `UserMixin` for session management integration.
+
 
 
