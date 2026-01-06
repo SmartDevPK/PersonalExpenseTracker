@@ -149,5 +149,12 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Imported `UserSchema` for centralized schema management.
 - This structure supports scalable addition of data serialization schemas.
 
+## Notes
+
+- Added `app/schemas/user_schema.py` defining `UserSchema` using Marshmallow.
+- Schema handles serialization and validation of user data.
+- Includes fields for id (read-only), username, email, and password (write-only).
+
+
 
 
