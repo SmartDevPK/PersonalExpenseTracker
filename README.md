@@ -92,5 +92,12 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - This includes registration, login, logout, password reset, and form handling.
 - I structured the routes to integrate CSRF protection, database access, and reusable service layers.
 
+## Notes
+
+- I implemented full user authentication routes in `app/api/user_routes.py`.
+- This includes registration, login, logout, and password recovery workflows.
+- I integrated Flask-Login, CSRF protection, and form validation while keeping business logic in service layers.
+- This structure improves maintainability and keeps user-related concerns isolated within the API layer.
+
 
 
