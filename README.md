@@ -159,6 +159,11 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - This setup supports modular and maintainable business logic separation.
  Includes fields for id (read-only), username, email, and password (write-only).
 
+## Notes
+
+- Updated `login.html` and `register.html` templates to improve user authentication UI/UX.
+- Modified `requirements.txt` to reflect new or updated Python dependencies necessary for the project.
+
 
 
 
