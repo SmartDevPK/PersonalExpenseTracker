@@ -105,6 +105,12 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - This setup improves security by loading sensitive information from `.env` and supports easy configuration changes across environments.
 
 
+## Notes
+
+- Added `app/core/security.py` to configure Cross-Origin Resource Sharing (CORS) for API endpoints.
+- The `init_security` function reads allowed origins from environment variables, improving security and flexibility.
+- This setup ensures that only specified frontends can access the API while supporting credentials like cookies.
+
 
 
 
