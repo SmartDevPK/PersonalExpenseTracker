@@ -191,6 +191,12 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Encapsulates login verification, session handling, and security checks.
 - Keeps authentication logic modular and reusable across the application.
 
+## Notes
+
+- Added `app/services/email_service.py` to encapsulate email-related functionality.
+- Handles sending password reset, welcome, and notification emails.
+- Centralizes email logic for easier management and future enhancements.
+
 
 
 
