@@ -179,6 +179,12 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Added `app/extensions.py` to centralize initialization and configuration of Flask extensions.
 - This approach improves modularity and keeps extension setup organized across the application.
 
+## Notes
+
+- Added `app/services/RegistrationForm.py` to handle user registration logic.
+- Encapsulates validation, user creation, and related business rules in a dedicated service layer.
+- Improves separation of concerns and keeps registration workflow modular and testable.
+
 
 
 
