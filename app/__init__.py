@@ -8,6 +8,7 @@ from app.core.security import init_security
 from app.config import Config
 from app.api import blueprints
 from app.api.user_routes import user_api
+from app.api.expenses import expenses_bp
 
 # Load environment variables early
 load_dotenv()
@@ -35,6 +36,8 @@ def create_app():
 
     if user_api not in blueprints:
         app.register_blueprint(user_api)
+
+    app.register_blueprint(expenses_bp)
 
     # Set Content Security Policy header
     @app.after_request
