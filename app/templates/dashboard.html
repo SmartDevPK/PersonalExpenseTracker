@@ -2,126 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Expense Tracker - Dashboard</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f7f8;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-    header {
-      background-color: #3498db;
-      color: white;
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 1.75rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-    main {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px 40px;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-    }
-    h2 {
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    input[type="text"],
-    input[type="number"],
-    input[type="date"],
-    input[type="time"],
-    input[type="file"],
-    textarea {
-      width: 100%;
-      padding: 10px 12px;
-      margin-bottom: 20px;
-      border: 1.8px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
-    }
-    input[type="text"]:focus,
-    input[type="number"]:focus,
-    input[type="date"]:focus,
-    input[type="time"]:focus,
-    input[type="file"]:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #3498db;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-    }
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    button.btn-primary {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1.1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-    button.btn-primary:hover {
-      background-color: #2980b9;
-    }
-    .logout-link {
-      display: inline-block;
-      margin-top: 10px;
-      background-color: #e74c3c;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-    .logout-link:hover {
-      background-color: #c0392b;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expense Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+ 
 </head>
 <body>
-  <header>Expense Tracker Dashboard</header>
-  <main>
-    <h2>Add New Expense</h2>
-    <form method="POST" action="" enctype="multipart/form-data">
-      {{ form.hidden_tag() }}
+  <div class="container">
+    <nav>
+      <h2>ExpenseTracker</h2>
+      <ul>
+        <li><a href="#" class="active" data-tooltip="Dashboard">Dashboard</a></li>
+        <li><a href="#" data-tooltip="Expenses">Expenses</a></li>
+        <li><a href="#" data-tooltip="Reports">Reports</a></li>
+        <li><a href="#" data-tooltip="Settings">Settings</a></li>
+      </ul>
+      <div>&copy; 2026 Your Company</div>
+    </nav>
 
-      <label for="date">Date</label>
-      {{ form.date(class="form-control", id="date") }}
+    <main>
+      <header>Expenses Dashboard</header>
+      <button class="btn-add" id="openAddModal">+ Add Expense</button>
 
-      <label for="time">Time</label>
-      {{ form.time(class="form-control", id="time") }}
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="expensesTableBody">
+          <!-- Expenses will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </main>
+  </div>
 
-      <label for="description">Description</label>
-      {{ form.description(class="form-control", id="description", placeholder="E.g. Grocery shopping") }}
+  <!-- Add/Edit Expense Modal -->
+  <div class="modal" id="expenseModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal">&times;</button>
+      <h3 id="modalTitle">Add Expense</h3>
+      <form id="expenseForm">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required />
 
-      <label for="amount">Amount (USD)</label>
-      {{ form.amount(class="form-control", id="amount", step="0.01") }}
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" name="amount" step="0.01" min="0" required />
 
-      <label for="receipt">Upload Receipt</label>
-      {{ form.receipt(class="form-control-file", id="receipt") }}
+        <label for="category">Category</label>
+     <select id="category" name="category_id" required>
+      <option value="">Select category</option>
+      <option value="1">Food</option>
+      <option value="2">Transport</option>
+      <option value="3">Utilities</option>
+      <option value="4">Entertainment</option>
+      <option value="5">Healthcare</option>
+    </select>
 
-      <button type="submit" class="btn-primary">Add Expense</button>
-    </form>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required />
 
-    <a href="{{ url_for('user_api.logout') }}" class="logout-link">Logout</a>
-  </main>
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+
+        <div class="modal-footer">
+          <button type="button" id="cancelBtn">Cancel</button>
+          <button type="submit" id="submitBtn">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
 </html>
