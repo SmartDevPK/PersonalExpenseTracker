@@ -248,5 +248,28 @@ The API communicates using JSON format, making it easy to integrate with fronten
 ```bash
 GET /expenses
 
+## Expense Model
+
+The `app/models/expense.py` file defines the `Expense` model, which represents an expense record in the database.
+
+### Key Features:
+- Stores expense details such as title, amount, description, category, and date.
+- Tracks timestamps for creation and updates.
+- Linked to a user to associate expenses with the owner.
+- Supports categorization through a foreign key to expense categories.
+
+This model is used by the API and service layers to manage expense data persistently.
+
+---
+
+### Example fields:
+- `id`: Unique identifier
+- `user_id`: Reference to the owner user
+- `title`: Name or description of the expense
+- `amount`: Expense amount (decimal)
+- `description`: Optional details
+- `category_id`: Expense category reference
+- `expense_date`: Date of the expense
+- `created_at`, `updated_at`: Timestamp fields
 
 
