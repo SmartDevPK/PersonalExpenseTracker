@@ -288,3 +288,16 @@ The `app/models/expense_category.py` file defines the `ExpenseCategory` model, r
 - `id`: Unique identifier for the category  
 - `name`: Name of the expense category (e.g., Food, Transport, Utilities)
 
+## Database Seeding
+
+The `app/seed.py` script is used to populate the database with initial or sample data. This helps in:
+
+- Setting up default categories or users
+- Providing test data for development and testing
+- Quickly initializing the database with meaningful records
+
+To run the seed script:
+
+```bash
+python app/seed.py
+
