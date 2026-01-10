@@ -313,3 +313,12 @@ This service layer helps keep the code modular, maintainable, and easier to test
 
 ---
 
+## Static Assets
+
+The `app/static/` directory contains all frontend static files, including:
+
+- **CSS stylesheets** for layout and design  
+- **JavaScript files** for client-side interactivity and dynamic behavior  
+- **Images and icons** used throughout the application  
+
+These assets support the user interface and enhance user experience on the frontend.
