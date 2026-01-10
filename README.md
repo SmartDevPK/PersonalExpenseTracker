@@ -273,3 +273,18 @@ This model is used by the API and service layers to manage expense data persiste
 - `created_at`, `updated_at`: Timestamp fields
 
 
+## ExpenseCategory Model
+
+The `app/models/expense_category.py` file defines the `ExpenseCategory` model, representing categories for expenses.
+
+### Key Features:
+- Stores category names for organizing expenses.
+- Ensures unique category names to avoid duplicates.
+- Used to link expenses to specific categories for better tracking and reporting.
+
+---
+
+### Example fields:
+- `id`: Unique identifier for the category  
+- `name`: Name of the expense category (e.g., Food, Transport, Utilities)
+
