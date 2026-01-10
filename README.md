@@ -228,5 +228,25 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Enhanced the dashboard UI with improved styling for better user experience.
 - Updated HTML and CSS to create a cleaner, more modern layout.
 
+## API - Expenses Endpoint
+
+The `app/api/expenses.py` module defines the backend API routes for managing expenses. It includes:
+
+- **GET /expenses**: Retrieves the list of expenses for the authenticated user.
+- **POST /expenses**: Adds a new expense for the authenticated user.
+
+These endpoints require user authentication and handle data validation, ensuring that only valid expense data is saved.
+
+The API communicates using JSON format, making it easy to integrate with frontend applications or other services.
+
+---
+
+### Example Usage
+
+- Fetch all expenses:
+
+```bash
+GET /expenses
+
 
 
