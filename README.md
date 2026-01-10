@@ -301,3 +301,15 @@ To run the seed script:
 ```bash
 python app/seed.py
 
+## Expense Service
+
+The `app/services/expense_service.py` module contains business logic related to expenses, including:
+
+- Adding new expenses to the database
+- Validating and processing expense data
+- Acting as an intermediary between the API routes and the database models
+
+This service layer helps keep the code modular, maintainable, and easier to test by separating core logic from request handling.
+
+---
+
