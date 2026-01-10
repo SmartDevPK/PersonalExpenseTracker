@@ -223,5 +223,10 @@ The `app/__init__.py` file contains the Flask application factory function `crea
 - Registered the `expenses_bp` blueprint in `app/__init__.py` to handle expense-related API routes.
 - This allows the application to manage expenses through the new endpoints provided by the `expenses` module.
 
+### Dashboard Improvements
+
+- Enhanced the dashboard UI with improved styling for better user experience.
+- Updated HTML and CSS to create a cleaner, more modern layout.
+
 
 
