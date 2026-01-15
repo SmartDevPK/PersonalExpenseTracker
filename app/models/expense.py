@@ -17,6 +17,7 @@ class Expense(db.Model):
     # Expense details
     title = db.Column(db.String(150), nullable=False)
     amount = db.Column(db.Numeric(10, 2), nullable=False)
+    receipt_url = db.Column(db.String(255), nullable=True)
     category_id = db.Column(db.Integer, db.ForeignKey("expense_categories.id"), nullable=False)
     description = db.Column(db.Text, nullable=False)
     expense_date = db.Column(db.Date, nullable=False)
