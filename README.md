@@ -388,3 +388,7 @@ The `app/services/receipt_service.py` module handles all operations related to m
 
 This service centralizes receipt-related logic to maintain separation of concerns, ensuring cleaner and more maintainable code.
 
+
+## Uploads Directory
+
+The app/static/uploads/ directory is used to store user-uploaded receipt files. This folder is not tracked by Git and should be created automatically when the application runs. Ensure this directory has proper write permissions for the app to save uploaded files successfully.
