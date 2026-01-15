@@ -343,3 +343,13 @@ The Expense model now includes a new optional field receipt_url to store URLs of
 - **Purpose: Store the path or URL to uploaded receipt files linked to each expense
 
 - ** Supported file types: PNG, JPG, JPEG, PDF
+
+## Expense Receipt Support
+
+- **Added support for uploading and storing receipt files associated with expenses.
+
+- **The add_expense service function now accepts a receipt_url parameter to save the URL/path of the uploaded receipt.
+
+- **The Expense model includes a receipt_url field to store the receipt location.
+
+- **API endpoints and frontend updated to handle receipt file uploads and display.
