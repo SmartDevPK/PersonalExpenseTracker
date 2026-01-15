@@ -322,3 +322,18 @@ The `app/static/` directory contains all frontend static files, including:
 - **Images and icons** used throughout the application  
 
 These assets support the user interface and enhance user experience on the frontend.
+
+
+## Expenses Management API
+
+- **GET /expenses**  
+  Fetch all expenses for the authenticated user, including metadata and optional receipt URLs.
+
+- **POST /expenses**  
+  Create a new expense entry with support for uploading receipt files (PNG, JPG, JPEG, PDF).  
+  Validates input data, stores receipts securely, and returns the created expense with its receipt URL.
+
+This feature enhances expense tracking by enabling users to attach and access digital receipts seamlessly.
+
+
+
