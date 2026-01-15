@@ -37,6 +37,7 @@ function renderExpenses() {
     tr.innerHTML = `
       <td>${expense.title}</td>
       <td>$${expense.amount.toFixed(2)}</td>
+      <td>${expense.receipt_url ? `<a href="${expense.receipt_url}" target="_blank">View</a>` : 'No receipt'}</td>
       <td>${getCategoryName(expense.category_id)}</td>
       <td>${expense.date}</td>
       <td>${expense.description}</td>
@@ -79,6 +80,7 @@ function editExpense(index) {
 
   expenseForm.title.value = expense.title;
   expenseForm.amount.value = expense.amount;
+  // Note: file inputs cannot be set programmatically for security reasons
   expenseForm.category_id.value = expense.category_id;
   expenseForm.date.value = expense.date;
   expenseForm.description.value = expense.description;
@@ -122,6 +124,7 @@ async function loadExpensesFromServer() {
       id: expense.id,
       title: expense.title,
       amount: parseFloat(expense.amount),
+      receipt_url: expense.receipt_url,
       category_id: expense.category_id,
       date: expense.expense_date || '',
       description: expense.description || ''
@@ -137,20 +140,25 @@ async function loadExpensesFromServer() {
 expenseForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const expenseData = {
-    title: expenseForm.title.value.trim(),
-    amount: parseFloat(expenseForm.amount.value),
-    category_id: expenseForm.category_id.value,
-    date: expenseForm.date.value,
-    description: expenseForm.description.value.trim(),
-  };
+  const formData = new FormData();
+
+  formData.append('title', expenseForm.title.value.trim());
+  formData.append('amount', expenseForm.amount.value);
+  formData.append('category_id', expenseForm.category_id.value);
+  formData.append('date', expenseForm.date.value);
+  formData.append('description', expenseForm.description.value.trim());
+
+  // Append receipt file if selected
+  const fileInput = expenseForm.querySelector('input[type="file"][name="receipt_url"]');
+  if (fileInput && fileInput.files.length > 0) {
+    formData.append('receipt_url', fileInput.files[0]);
+  }
 
   try {
     const response = await fetch('/expenses', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify(expenseData),
+      body: formData // Send FormData (not JSON)
     });
 
     if (!response.ok) {
@@ -166,6 +174,7 @@ expenseForm.addEventListener('submit', async (e) => {
         id: newExpense.id,
         title: newExpense.title,
         amount: parseFloat(newExpense.amount),
+        receipt_url: newExpense.receipt_url || '',
         category_id: newExpense.category_id,
         date: newExpense.expense_date || '',
         description: newExpense.description || ''
@@ -175,6 +184,7 @@ expenseForm.addEventListener('submit', async (e) => {
         id: newExpense.id,
         title: newExpense.title,
         amount: parseFloat(newExpense.amount),
+        receipt_url: newExpense.receipt_url || '',
         category_id: newExpense.category_id,
         date: newExpense.expense_date || '',
         description: newExpense.description || ''
