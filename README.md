@@ -353,3 +353,16 @@ The Expense model now includes a new optional field receipt_url to store URLs of
 - **The Expense model includes a receipt_url field to store the receipt location.
 
 - **API endpoints and frontend updated to handle receipt file uploads and display.
+
+
+## Expense Service
+
+- **The app/services/expense_service.py module encapsulates the core business logic for managing expenses, including:
+
+- **Creating and saving new expense records in the database
+
+- **Validating and processing expense input data
+
+- **Serving as an abstraction layer between API endpoints and database models
+
+- **This separation promotes modularity, enhances maintainability, and simplifies testing by decoupling the business rules from HTTP request handling.
