@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Expense Dashboard</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
- 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
   <div class="container">
@@ -29,6 +28,7 @@
           <tr>
             <th>Title</th>
             <th>Amount</th>
+            <th>Receipt</th>
             <th>Category</th>
             <th>Date</th>
             <th>Description</th>
@@ -47,22 +47,25 @@
     <div class="modal-content">
       <button class="modal-close" id="closeModal">&times;</button>
       <h3 id="modalTitle">Add Expense</h3>
-      <form id="expenseForm">
+      <form id="expenseForm" enctype="multipart/form-data">
         <label for="title">Title</label>
         <input type="text" id="title" name="title" required />
 
         <label for="amount">Amount</label>
         <input type="number" id="amount" name="amount" step="0.01" min="0" required />
 
+        <label for="receipt">Receipt (optional)</label>
+        <input type="file" id="receipt" name="receipt_url" accept=".png,.jpg,.jpeg,.pdf" />
+
         <label for="category">Category</label>
-     <select id="category" name="category_id" required>
-      <option value="">Select category</option>
-      <option value="1">Food</option>
-      <option value="2">Transport</option>
-      <option value="3">Utilities</option>
-      <option value="4">Entertainment</option>
-      <option value="5">Healthcare</option>
-    </select>
+        <select id="category" name="category_id" required>
+          <option value="">Select category</option>
+          <option value="1">Food</option>
+          <option value="2">Transport</option>
+          <option value="3">Utilities</option>
+          <option value="4">Entertainment</option>
+          <option value="5">Healthcare</option>
+        </select>
 
         <label for="date">Date</label>
         <input type="date" id="date" name="date" required />
@@ -78,5 +81,5 @@
     </div>
   </div>
 </body>
-<script src="{{url_for('static', filename='js/script.js')}}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </html>
