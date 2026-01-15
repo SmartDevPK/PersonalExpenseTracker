@@ -366,3 +366,13 @@ The Expense model now includes a new optional field receipt_url to store URLs of
 - **Serving as an abstraction layer between API endpoints and database models
 
 - **This separation promotes modularity, enhances maintainability, and simplifies testing by decoupling the business rules from HTTP request handling.
+
+## Dashboard Update: Receipt Upload Support
+
+- **Added a new Receipt column to the expenses dashboard table to display uploaded receipt files.
+
+- **Enabled file upload support in the expense form with enctype="multipart/form-data".
+
+- **Users can now optionally attach receipt files (images or PDFs) when adding expenses.
+
+- **Uploaded receipts are accessible via links in the dashboard for easy viewing.
