@@ -335,5 +335,11 @@ These assets support the user interface and enhance user experience on the front
 
 This feature enhances expense tracking by enabling users to attach and access digital receipts seamlessly.
 
+## Expense Model Update: Receipt Upload Support
+The Expense model now includes a new optional field receipt_url to store URLs of uploaded receipt files (e.g., images, PDFs). This enhancement allows users to associate digital receipts with their expense records for easier verification and tracking.
 
+- **Field: receipt_url (string, nullable)
 
+- **Purpose: Store the path or URL to uploaded receipt files linked to each expense
+
+- ** Supported file types: PNG, JPG, JPEG, PDF
