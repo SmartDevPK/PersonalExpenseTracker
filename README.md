@@ -376,3 +376,15 @@ The Expense model now includes a new optional field receipt_url to store URLs of
 - **Users can now optionally attach receipt files (images or PDFs) when adding expenses.
 
 - **Uploaded receipts are accessible via links in the dashboard for easy viewing.
+
+## Receipt Service
+
+The `app/services/receipt_service.py` module handles all operations related to managing receipt files for expenses, including:
+
+- Validating uploaded file types against allowed formats (PNG, JPG, JPEG, PDF)
+- Generating unique filenames for uploaded receipts to avoid conflicts
+- Saving receipt files securely to the designated upload directory
+- Providing accessible URLs for stored receipt files to be used within the application
+
+This service centralizes receipt-related logic to maintain separation of concerns, ensuring cleaner and more maintainable code.
+
